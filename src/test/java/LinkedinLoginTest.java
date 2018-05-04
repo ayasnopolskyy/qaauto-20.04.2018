@@ -4,16 +4,29 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import static java.lang.Thread.sleep;
 
+
 public class LinkedinLoginTest {
 
-    @Test
-    public void successfullogintest(){
-        WebDriver webDriver = new FirefoxDriver();
+    WebDriver webDriver;
+
+    @BeforeMethod
+    public void before(){
+        webDriver = new FirefoxDriver();
         webDriver.get("https://www.linkedin.com");
+
+    }
+
+    @AfterMethod
+    public void after () {
+        webDriver.close();
+
+    }
+    @Test
+    public void successfulogintest(){
 
         Assert.assertEquals(webDriver.getTitle(),
                 "LinkedIn: Log In or Sign Up", "Wrong Result");
@@ -25,9 +38,24 @@ public class LinkedinLoginTest {
         userPasswordField.sendKeys("p0o9P)O(" );
 
         WebElement signInButton = webDriver.findElement(By.xpath("//input[@id='login-submit']"));
-        signInButton.sendKeys(Keys.RETURN);
+        signInButton.click();
 
         Assert.assertEquals(webDriver.getTitle(),
-                "get set up to advance your career in 3 easy steps", "Wrong Result");
+                "LinkedIn", "Wrong Result");
     }
+    @Test
+    public void negativeLoginTest () throws InterruptedException {
+        WebElement signInButton = webDriver.findElement(By.xpath("//input[@id='login-submit']"));
+
+        Assert.assertTrue(signInButton.isDisplayed(), "Sign In button is missing");
+
+        WebElement userEmailField = webDriver.findElement(By.xpath("//input[@id='login-email']"));
+        userEmailField.sendKeys("" );
+        WebElement userPasswordField = webDriver.findElement(By.xpath("//input[@id='login-password']"));
+        userPasswordField.sendKeys("" );
+        signInButton.click();
+        sleep (3000);
+        Assert.assertTrue(signInButton.isDisplayed(), "Sign In button is missing");
+    }
+
 }
