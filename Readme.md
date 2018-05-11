@@ -20,12 +20,13 @@ copy this file to windows/system 32
 for creation of files with .md extension
 8. For adding a plugin go to: File - Settings - Plugin - Select a zip file
 ##### GitHUB setup
-1. Go to github.com
+1. Go to [github.com](github.com)
 2. Go through Sign Up flow
-3. Create new public repository
-4. Upload project using drag&drop
-5. Copy URL from "Clone&Download" to Intellij IDEA -> VCS -> Checkout for Version Control -> GIT 
-5. Go to https://gitforwindows.org/
-6. Download and install Git for Windows
-7. Paste git.exe full path to Intellij IDEA -> VCS -> Checkout for Version Control -> GIT 
-8. To Commit and Push go to 
+3. Create new _public_ repository
+4. Create .gitignore file (.iml, target, .idea )
+5. Upload project using drag&drop
+6. Copy URL from "Clone&Download" to Intellij IDEA -> VCS -> Checkout for Version Control -> GIT 
+7. Go to [https://gitforwindows.org/](https://gitforwindows.org/)
+8. Download and install Git for Windows
+9. Paste git.exe full path to Intellij IDEA -> VCS -> Checkout for Version Control -> GIT 
+10. To Commit and Push go to [ProjectFolder] - Git -> Commit Directory
