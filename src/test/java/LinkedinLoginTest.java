@@ -25,14 +25,22 @@ public class LinkedinLoginTest {
         webDriver.close();
 
     }
-    @Test
-    public void successfulogintest(){
+    @DataProvider
+    public Object[][] ValidDataProvider() {
+        return new Object[][]{
+                { "gor1362@gmail.com", "p0o9P)O("},
+                { "GOR1362@gmail.com", "p0o9P)O(" }
+        };
+    }
+
+    @Test (dataProvider = "ValidDataProvider")
+    public void successfullogintest(String userEmail, String userPassword){
 
 
         LinkedinLoginPage linkedinLoginPage = new LinkedinLoginPage (webDriver);
         Assert.assertEquals(linkedinLoginPage.getCurrentPageTitle(),
                 "LinkedIn: Log In or Sign Up", "Login Page Title is wrong");
-        linkedinLoginPage.login("gor1362@gmail.com","p0o9P)O(" );
+        linkedinLoginPage.login(userEmail, userPassword );
         LinkedInHomePage linkedInHomePage = new LinkedInHomePage(webDriver);
 
         Assert.assertTrue(linkedInHomePage.isProfileMenuDisplayed(), "Profile menu is not displayed" );
@@ -46,7 +54,7 @@ public class LinkedinLoginTest {
     }
 
     @Test
-    public void successfulCaseInsensitiveLogin() {
+    public void successfullCaseInsensitiveLogin() {
 
         LinkedinLoginPage linkedinLoginPage = new LinkedinLoginPage (webDriver);
         Assert.assertEquals(linkedinLoginPage.getCurrentPageTitle(),
@@ -80,10 +88,8 @@ public class LinkedinLoginTest {
         Assert.assertEquals(linkedinLoginPage.getCurrentPageTitle(),
                 "LinkedIn: Log In or Sign Up", "Login Page Title is wrong");
         linkedinLoginPage.login("gor1362@gmail.com","P0o9P)O(" );
-
         LinkedinLoginSubmit linkedinLoginSubmit = new LinkedinLoginSubmit (webDriver);
-
-        Assert.assertTrue(linkedinLoginSubmit.isErrorMessageDisplayed(), "There were one or more errors in your submission. Please correct the marked fields below.");
+        Assert.assertEquals(linkedinLoginSubmit.getErrorMessageText(), "There were one or more errors in your submission. Please correct the marked fields below.");
     }
 
     @Test
@@ -96,7 +102,7 @@ public class LinkedinLoginTest {
 
         LinkedinLoginSubmit linkedinLoginSubmit = new LinkedinLoginSubmit (webDriver);
 
-        Assert.assertTrue(linkedinLoginSubmit.isErrorMessageDisplayed(), "There were one or more errors in your submission. Please correct the marked fields below.");
+        Assert.assertEquals(linkedinLoginSubmit.getErrorMessageText(), "There were one or more errors in your submission. Please correct the marked fields below.");
     }
 
     @Test

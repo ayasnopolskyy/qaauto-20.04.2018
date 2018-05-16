@@ -5,19 +5,25 @@ import org.openqa.selenium.WebElement;
 public class LinkedinLoginSubmit {
     private WebDriver webDriver;
 
-    private WebElement errorMessage;
+    private WebElement errorMessageElement;
 
     public LinkedinLoginSubmit(WebDriver webDriver) {
         this.webDriver = webDriver;
+        initElements();
     }
 
-    private void initErrorMessage()   {
-        errorMessage = webDriver.findElement(By.xpath("//div[@id='control_gen_1']"));
+    private void initElements()   {
+
+        errorMessageElement = webDriver.findElement(By.xpath("//div[@role='alert']"));
     }
 
 
-    public boolean isErrorMessageDisplayed() {
-        return errorMessage.isDisplayed();
+    //public boolean isErrorMessageDisplayed() {
+      //  return errorMessageElement.isDisplayed();
+    //}
+
+    public String getErrorMessageText(){
+        return errorMessageElement.getText();
     }
 
 
