@@ -2,16 +2,20 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class LinkedinLoginPage {
-    private WebDriver webDriver;
+public class LinkedinLoginPage extends LinkedInBasePage {
 
     private WebElement userEmailField;
     private WebElement userPasswordField;
     private WebElement signInButton;
 
     public LinkedinLoginPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
+        super(webDriver);
         initElements();
+    }
+
+    @Override
+    boolean isPageLoaded() {
+        return signInButton.isDisplayed();
     }
 
     private void initElements(){
@@ -28,10 +32,6 @@ public class LinkedinLoginPage {
     }
     public boolean isSignInButtonDisplayed(){
         return signInButton.isDisplayed();
-    }
-    public String getCurrentPageTitle() {
-        return webDriver.getTitle();
-
     }
 
 }

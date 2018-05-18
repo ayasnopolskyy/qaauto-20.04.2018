@@ -4,28 +4,32 @@ import org.openqa.selenium.WebElement;
 
 import static java.lang.Thread.sleep;
 
-public class LinkedInHomePage {
+public class LinkedInHomePage extends LinkedInBasePage {
 
-        private WebDriver webDriver;
+       private WebElement profileMenu;
 
-        private WebElement profileMenu;
+    public LinkedInHomePage(WebDriver webDriver) {
+        super(webDriver);
+        initElements();
+    }
 
-        public LinkedInHomePage(WebDriver webDriver) {
-            this.webDriver = webDriver;
-            initElements();
+    @Override
+    boolean isPageLoaded() {
+        return profileMenu.isDisplayed();
+    }
+
+    public void initElements() {
+        try {
+            sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+        profileMenu = webDriver.findElement(By.xpath("//li[@id='profile-nav-item']"));
+    }
 
-        public void initElements() {
-            try {
-                sleep (5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            profileMenu = webDriver.findElement(By.xpath("//li[@id='profile-nav-item']"));
-        }
+    public boolean isProfileMenuDisplayed() {
+        return profileMenu.isDisplayed ();
+    }
 
-        public boolean isProfileMenuDisplayed(){
-            return profileMenu.isDisplayed();
-        }
 
 }
