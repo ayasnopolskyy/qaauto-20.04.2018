@@ -2,11 +2,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class LinkedinLoginSubmit extends LinkedInBasePage {
+public class LinkedinLoginSubmitPage extends LinkedInBasePage {
 
     private WebElement errorMessageElement;
 
-    public LinkedinLoginSubmit(WebDriver webDriver) {
+    public LinkedinLoginSubmitPage (WebDriver webDriver) {
         super(webDriver);
         initElements();
     }

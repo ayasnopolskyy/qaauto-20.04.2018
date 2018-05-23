@@ -70,7 +70,7 @@ public class LinkedinLoginTest  {
                 "LinkedIn: Log In or Sign Up", "Login Page Title is wrong");
         linkedinLoginPage.login(userEmail, userPasswords );
 
-        LinkedinLoginSubmit linkedinLoginSubmit = new LinkedinLoginSubmit (webDriver);
+        LinkedinLoginSubmitPage linkedinLoginSubmit = new LinkedinLoginSubmitPage (webDriver);
         Assert.assertEquals(linkedinLoginSubmit.getErrorMessageText(),
                 "There were one or more errors in your submission. Please correct the marked fields below.");
     }

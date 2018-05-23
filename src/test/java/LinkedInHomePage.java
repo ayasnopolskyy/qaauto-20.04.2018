@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -6,7 +7,8 @@ import static java.lang.Thread.sleep;
 
 public class LinkedInHomePage extends LinkedInBasePage {
 
-       private WebElement profileMenu;
+    private WebElement profileMenu;
+    private WebElement searchField;
 
     public LinkedInHomePage(WebDriver webDriver) {
         super(webDriver);
@@ -25,11 +27,14 @@ public class LinkedInHomePage extends LinkedInBasePage {
             e.printStackTrace();
         }
         profileMenu = webDriver.findElement(By.xpath("//li[@id='profile-nav-item']"));
+        searchField = webDriver.findElement(By.xpath("//input[@role='combobox']"));
     }
 
-    public boolean isProfileMenuDisplayed() {
-        return profileMenu.isDisplayed ();
+    public void search(String searchQuery){
+        searchField.sendKeys(searchQuery);
+        searchField.sendKeys(Keys.RETURN);
     }
+
 
 
 }

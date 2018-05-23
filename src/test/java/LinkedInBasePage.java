@@ -8,10 +8,6 @@ public abstract class LinkedInBasePage {
             this.webDriver=webDriver;
         }
 
-        public String getCurrentUrl() {
-            return webDriver.getCurrentUrl();
-        }
-
         public String getCurrentPageTitle() {
             return webDriver.getTitle();
         }
