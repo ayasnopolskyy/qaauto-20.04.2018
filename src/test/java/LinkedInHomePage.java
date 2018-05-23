@@ -27,11 +27,11 @@ public class LinkedInHomePage extends LinkedInBasePage {
             e.printStackTrace();
         }
         profileMenu = webDriver.findElement(By.xpath("//li[@id='profile-nav-item']"));
-        searchField = webDriver.findElement(By.xpath("//input[@role='combobox']"));
+        searchField = webDriver.findElement(By.xpath("//input[@role and @placeholder='Search']"));
     }
 
-    public void search(String searchQuery){
-        searchField.sendKeys(searchQuery);
+    public void search(String searchTerm){
+        searchField.sendKeys(searchTerm);
         searchField.sendKeys(Keys.RETURN);
     }
 
