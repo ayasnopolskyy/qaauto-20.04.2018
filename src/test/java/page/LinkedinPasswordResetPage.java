@@ -1,6 +1,9 @@
+package page;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import page.LinkedInBasePage;
 
 public class LinkedinPasswordResetPage extends LinkedInBasePage {
 
@@ -14,7 +17,7 @@ public class LinkedinPasswordResetPage extends LinkedInBasePage {
     }
 
     @Override
-    boolean isPageLoaded() {
+    public boolean isPageLoaded() {
         return userEmailField.isDisplayed();
     }
 

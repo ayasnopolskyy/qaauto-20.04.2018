@@ -1,34 +1,29 @@
-import org.openqa.selenium.By;
+package page;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-import static java.lang.Thread.sleep;
 
 public class LinkedInHomePage extends LinkedInBasePage {
 
+    @FindBy (xpath = "//li[@id='profile-nav-item']")
     private WebElement profileMenu;
+    @FindBy (xpath = "//input[@role and @placeholder='Search']")
     private WebElement searchField;
 
     public LinkedInHomePage(WebDriver webDriver) {
         super(webDriver);
-        initElements();
+        PageFactory.initElements(webDriver, this);
     }
 
     @Override
-    boolean isPageLoaded() {
+    public boolean isPageLoaded() {
         return profileMenu.isDisplayed();
     }
 
-    public void initElements() {
-        try {
-            sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        profileMenu = webDriver.findElement(By.xpath("//li[@id='profile-nav-item']"));
-        searchField = webDriver.findElement(By.xpath("//input[@role and @placeholder='Search']"));
-    }
 
     public void search(String searchTerm){
         searchField.sendKeys(searchTerm);

@@ -1,5 +1,7 @@
+package page;
 
 import org.openqa.selenium.*;
+import page.LinkedInBasePage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +19,7 @@ public class LinkedinSearchPage extends LinkedInBasePage {
     }
 
     @Override
-    boolean isPageLoaded() {
+    public boolean isPageLoaded() {
         return resultsCounter.isDisplayed();
 
     }

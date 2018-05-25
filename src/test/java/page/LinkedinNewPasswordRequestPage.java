@@ -1,6 +1,9 @@
+package page;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import page.LinkedInBasePage;
 
 public class LinkedinNewPasswordRequestPage extends LinkedInBasePage {
 
@@ -17,7 +20,7 @@ public class LinkedinNewPasswordRequestPage extends LinkedInBasePage {
 
 
     @Override
-    boolean isPageLoaded() {
+    public boolean isPageLoaded() {
         return newPasswordField.isDisplayed();
     }
 
