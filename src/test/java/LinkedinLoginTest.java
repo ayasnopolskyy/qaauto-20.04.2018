@@ -1,22 +1,9 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-public class LinkedinLoginTest  {
+public class LinkedinLoginTest extends LinkedinBaseTest {
 
-    WebDriver webDriver;
 
-    @BeforeMethod
-    public void before(){
-        webDriver = new FirefoxDriver();
-        webDriver.get("https://www.linkedin.com");
-    }
-
-    @AfterMethod
-    public void after () {
-        webDriver.close();
-    }
 
     @DataProvider
     public Object[][] ValidDataProvider() {
