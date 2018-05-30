@@ -1,19 +1,21 @@
 package page;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import page.LinkedInBasePage;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
 
 public class LinkedinPasswordResetPage extends LinkedInBasePage {
 
+    @FindBy(xpath = "//input[@id='username']")
     private WebElement userEmailField;
+    @FindBy(xpath = "//button[@id='reset-password-submit-button']")
     private WebElement submitButton;
 
 
     public LinkedinPasswordResetPage(WebDriver webDriver) {
         super(webDriver);
-        initElements();
+        PageFactory.initElements(webDriver, this);
     }
 
     @Override
@@ -22,15 +24,11 @@ public class LinkedinPasswordResetPage extends LinkedInBasePage {
     }
 
 
-    private void initElements() {
-        userEmailField = webDriver.findElement(By.xpath("//input[@id='username']"));
-        submitButton = webDriver.findElement(By.xpath( "//button[@id='reset-password-submit-button']"));
-    }
 
-
-    public void submitEmail (String userEmail) {
+    public LinkedinPasswordResetSubmitPage submitEmail (String userEmail) {
         userEmailField.sendKeys(userEmail);
         submitButton.click();
+        return new LinkedinPasswordResetSubmitPage(webDriver);
     }
 
 

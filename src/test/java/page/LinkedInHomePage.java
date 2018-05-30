@@ -25,9 +25,12 @@ public class LinkedInHomePage extends LinkedInBasePage {
     }
 
 
-    public void search(String searchTerm){
+    public LinkedinSearchPage search(String searchTerm){
         searchField.sendKeys(searchTerm);
         searchField.sendKeys(Keys.RETURN);
+        return PageFactory.initElements(webDriver, LinkedinSearchPage.class);
+        //return new LinkedinSearchPage(webDriver);
+
     }
 
 

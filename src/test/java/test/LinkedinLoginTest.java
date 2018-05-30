@@ -58,7 +58,7 @@ public class LinkedinLoginTest extends LinkedinBaseTest {
 
         Assert.assertTrue(linkedinLoginPage.isPageLoaded(),
                 "LinkedIn: Log In or Sign Up");
-        LinkedinLoginSubmitPage linkedinLoginSubmit = linkedinLoginPage.loginWithInvadlidData(userEmail, userPasswords );
+        LinkedinLoginSubmitPage linkedinLoginSubmit = linkedinLoginPage.loginWithInvalidData(userEmail, userPasswords );
 
                 Assert.assertEquals(linkedinLoginSubmit.getErrorMessageText(),
                 "There were one or more errors in your submission. Please correct the marked fields below.");

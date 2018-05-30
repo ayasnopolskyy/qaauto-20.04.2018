@@ -1,41 +1,31 @@
 package page;
 
 import org.openqa.selenium.*;
-import page.LinkedInBasePage;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import static java.lang.Thread.sleep;
+
 
 public class LinkedinSearchPage extends LinkedInBasePage {
 
+    @FindBy(xpath = "//h3[contains(text(), 'results')]")
     private WebElement profileMenu;
+    @FindBy(xpath = "//li[@id='profile-nav-item']")
     List<WebElement> searchResults;
+    @FindBy(xpath = "//li[contains(@class, 'search-result__occluded-item')]")
     WebElement resultsCounter;
 
     public LinkedinSearchPage(WebDriver webDriver) {
         super(webDriver);
-        initElements();
+        PageFactory.initElements(webDriver, this);
     }
 
     @Override
     public boolean isPageLoaded() {
         return resultsCounter.isDisplayed();
-
     }
-
-    public void initElements() {
-        try {
-            sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        resultsCounter = webDriver.findElement(By.xpath("//h3[contains(text(), 'results')]"));
-        profileMenu = webDriver.findElement(By.xpath("//li[@id='profile-nav-item']"));
-        searchResults = webDriver.findElements(By.xpath("//li[contains(@class, 'search-result__occluded-item')]"));
-    }
-
-
 
     public List<String> getResultsList() {
         List<String> searchResultsList = new ArrayList();

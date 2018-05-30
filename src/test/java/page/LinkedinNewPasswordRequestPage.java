@@ -1,20 +1,23 @@
 package page;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import page.LinkedInBasePage;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
 
 public class LinkedinNewPasswordRequestPage extends LinkedInBasePage {
 
-
+    @FindBy(xpath = "//input[@id='newpassword']")
     private WebElement newPasswordField;
+    @FindBy(xpath = "//button[@id='confirmpassword']")
     private WebElement confirmPassField;
+    @FindBy(xpath = "//button[@id='reset-password-submit-button']")
     private WebElement submitButton;
 
     public LinkedinNewPasswordRequestPage (WebDriver webDriver) {
         super(webDriver);
-        initElements();
+        PageFactory.initElements(webDriver, this);
     }
 
 
@@ -25,18 +28,13 @@ public class LinkedinNewPasswordRequestPage extends LinkedInBasePage {
     }
 
 
-    private void initElements() {
-        newPasswordField = webDriver.findElement(By.xpath("//input[@id='newpassword']"));
-        confirmPassField = webDriver.findElement(By.xpath( "//button[@id='confirmpassword']"));
-        submitButton = webDriver.findElement(By.xpath( "//button[@id='reset-password-submit-button']"));
-    }
 
 
-
-    public void createNewPassword(String newPass) {
+    public LinkedinPasswordChangedPage createNewPassword(String newPass) {
             newPasswordField.sendKeys(newPass);
             confirmPassField.sendKeys(newPass);
             submitButton.click();
+            return new LinkedinPasswordChangedPage(webDriver);
     }
 
 }
