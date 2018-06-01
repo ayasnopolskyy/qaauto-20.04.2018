@@ -6,10 +6,15 @@ import page.LinkedInHomePage;
 import page.LinkedinLoginSubmitPage;
 
 
+/**
+ * class with 3 login tests
+ */
 public class LinkedinLoginTest extends LinkedinBaseTest {
 
 
-
+    /**
+     * data provider with valid data
+     */
     @DataProvider
     public Object[][] ValidDataProvider() {
         return new Object[][]{
@@ -21,7 +26,9 @@ public class LinkedinLoginTest extends LinkedinBaseTest {
                 { "gor1362@gmail.com", "p0o9P)O( " }
         };
     }
-
+    /**
+     * data provider with invalid data
+     */
     @DataProvider
     public Object[][] InvalidDataProvider() {
         return new Object[][]{
@@ -31,7 +38,9 @@ public class LinkedinLoginTest extends LinkedinBaseTest {
                 { "p0o9P)O(", "gor1362@gmail.com" }
         };
     }
-
+    /**
+     * data provider with not full creds data
+     */
     @DataProvider
     public Object[][] BlankDataProvider() {
         return new Object[][]{
@@ -41,6 +50,10 @@ public class LinkedinLoginTest extends LinkedinBaseTest {
         };
     }
 
+    /**
+     * method that checks successful login flow, uses login, isPageLoaded, getCurrentPageTitle methods
+     * redirects to LinkedInHomePage
+     */
     @Test (dataProvider = "ValidDataProvider")
     public void successfulLoginTest(String userEmail, String userPassword){
 
@@ -53,6 +66,11 @@ public class LinkedinLoginTest extends LinkedinBaseTest {
         Assert.assertEquals(linkedInHomePage.getCurrentPageTitle(), "LinkedIn","Home Page Title is wrong");
     }
 
+
+    /**
+     * method that checks negative login flow, uses loginWithInvalidData, isPageLoaded, getCurrentPageTitle methods
+     *redirects to LinkedinLogonSubmit page
+     */
     @Test (dataProvider = "InvalidDataProvider")
     public void negativeInvalidCredentials(String userEmail, String userPasswords) {
 
@@ -64,6 +82,10 @@ public class LinkedinLoginTest extends LinkedinBaseTest {
                 "There were one or more errors in your submission. Please correct the marked fields below.");
     }
 
+    /**
+     * method that checks  login flow with not full creds, uses loginWithInvalidData, isPageLoaded, getCurrentPageTitle methods
+     * not redirects to another page
+     */
     @Test (dataProvider = "BlankDataProvider")
     public void negativeBlankFieldLoginTest (String userEmail, String userPassword){
 

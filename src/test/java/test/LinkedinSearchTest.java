@@ -10,9 +10,17 @@ import java.util.List;
 import static java.lang.Thread.sleep;
 
 
+/**
+ * Class with Seacrh test method
+ */
 public class LinkedinSearchTest extends LinkedinBaseTest {
 
 
+    /**
+     * method with basic search flow test
+     * uses login, isPageLoaded, getResultsCount, getResultList
+     * redirects from home page to search results page
+     */
     @Test
     public void basicSearchTest () throws InterruptedException {
         String searchTerm = "HR";
@@ -23,9 +31,9 @@ public class LinkedinSearchTest extends LinkedinBaseTest {
         Assert.assertTrue(linkedInHomePage.isPageLoaded(), "Home page is not loaded");
 
         LinkedinSearchPage linkedinSearchPage = linkedInHomePage.search(searchTerm);
-        sleep(5000);
+        sleep(3000);
         Assert.assertTrue(linkedinSearchPage.isPageLoaded(), "Home page is not loaded");
-        sleep(5000);
+        sleep(3000);
 
         Assert.assertEquals(linkedinSearchPage.getResultsCount(), 10, "search results count is wrong.");
         List<String> resultsList = linkedinSearchPage.getResultsList();

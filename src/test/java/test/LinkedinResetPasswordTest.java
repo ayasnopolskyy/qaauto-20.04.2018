@@ -5,9 +5,18 @@ import org.testng.annotations.Test;
 import page.*;
 
 
+/**
+ * Class with reset password flow
+ *
+ */
 public class LinkedinResetPasswordTest extends LinkedinBaseTest {
 
 
+    /**
+     * reset password method
+     * redirecting between reset password flow pages
+     *  uses clickOnForgotPasswordLink, submitEmail, isPageLoaded, tapGoToHomeButton methods
+     */
     @Test
     public void resetPassword()
     {

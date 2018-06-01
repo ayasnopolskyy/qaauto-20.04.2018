@@ -8,25 +8,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * page object for LinkedinSearchPage
+ */
 public class LinkedinSearchPage extends LinkedInBasePage {
 
-    @FindBy(xpath = "//h3[contains(text(), 'results')]")
-    private WebElement profileMenu;
     @FindBy(xpath = "//li[@id='profile-nav-item']")
+    private WebElement profileMenu;
+
+    @FindBy(xpath = "//h3[contains(text(), 'results')]")
     List<WebElement> searchResults;
+
     @FindBy(xpath = "//li[contains(@class, 'search-result__occluded-item')]")
     WebElement resultsCounter;
 
+    /**
+     * constructor for LinkedinSearchPage class
+     * @param webDriver - current webDriver object
+     * variables are initialized, but assigns values at the time of the call
+     */
     public LinkedinSearchPage(WebDriver webDriver) {
         super(webDriver);
         PageFactory.initElements(webDriver, this);
     }
 
+    /**
+     * checks that page is loaded
+     * @return true or false
+     */
     @Override
     public boolean isPageLoaded() {
         return resultsCounter.isDisplayed();
     }
 
+    /**
+     * checks that search results lists contains text on each element
+     */
     public List<String> getResultsList() {
         List<String> searchResultsList = new ArrayList();
         for (WebElement  searchResult:searchResults) {
@@ -37,6 +54,9 @@ public class LinkedinSearchPage extends LinkedInBasePage {
         return searchResultsList;
     }
 
+    /**
+     * gets and returns count of search results
+     */
     public int getResultsCount() {return searchResults.size();
     }
 }
