@@ -12,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class LinkedinPasswordChangedPage extends LinkedInBasePage {
 
-    @FindBy(xpath = "//input[@class='nav__base--logged-in nav__button--back-to-linkedin']")
+    @FindBy(xpath = "//button[@class='form__cancel']")
         private WebElement goToHomeButton;
 
 
@@ -30,7 +30,8 @@ public class LinkedinPasswordChangedPage extends LinkedInBasePage {
      * checks that page is loaded by searching go to Home button
      */
         @Override
-       boolean isPageLoaded() {
+       public boolean isPageLoaded() {
+            waitUntilElementIsClickable(goToHomeButton, 40);
             return goToHomeButton.isDisplayed();
         }
 
@@ -38,8 +39,9 @@ public class LinkedinPasswordChangedPage extends LinkedInBasePage {
     /**
      * clicks go to Home button
      */
-       public void tapGoToHomeButton() {
+       public LinkedInHomePage tapGoToHomeButton() {
              goToHomeButton.click();
+             return new LinkedInHomePage(webDriver);
         }
 
 

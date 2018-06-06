@@ -38,6 +38,7 @@ public class LinkedinSearchPage extends LinkedInBasePage {
      */
     @Override
     public boolean isPageLoaded() {
+        waitUntilElementIsClickable(resultsCounter, 40);
         return resultsCounter.isDisplayed();
     }
 

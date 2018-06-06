@@ -31,6 +31,7 @@ public class LinkedinLoginSubmitPage extends LinkedInBasePage {
      */
     @Override
     boolean isPageLoaded() {
+        waitUntilElementIsClickable(errorMessageElement, 40);
         return errorMessageElement.isDisplayed();
     }
 

@@ -7,8 +7,6 @@ import page.LinkedinSearchPage;
 
 import java.util.List;
 
-import static java.lang.Thread.sleep;
-
 
 /**
  * Class with Seacrh test method
@@ -22,18 +20,16 @@ public class LinkedinSearchTest extends LinkedinBaseTest {
      * redirects from home page to search results page
      */
     @Test
-    public void basicSearchTest () throws InterruptedException {
+    public void basicSearchTest () {
         String searchTerm = "HR";
         Assert.assertTrue(linkedinLoginPage.isPageLoaded(), "Login page is not loaded");
 
-        LinkedInHomePage linkedInHomePage = linkedinLoginPage.login("gor1362@gmail.com","p0o9P)O(");
+        LinkedInHomePage linkedInHomePage = linkedinLoginPage.login("gor1362@gmail.com","1p0o9P)O(");
 
         Assert.assertTrue(linkedInHomePage.isPageLoaded(), "Home page is not loaded");
 
         LinkedinSearchPage linkedinSearchPage = linkedInHomePage.search(searchTerm);
-        sleep(3000);
         Assert.assertTrue(linkedinSearchPage.isPageLoaded(), "Home page is not loaded");
-        sleep(3000);
 
         Assert.assertEquals(linkedinSearchPage.getResultsCount(), 10, "search results count is wrong.");
         List<String> resultsList = linkedinSearchPage.getResultsList();

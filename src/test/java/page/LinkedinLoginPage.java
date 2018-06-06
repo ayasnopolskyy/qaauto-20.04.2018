@@ -36,6 +36,7 @@ public class LinkedinLoginPage extends LinkedInBasePage {
 
     @Override
     public boolean isPageLoaded() {
+       // waitUntilElementIsClickable(signInButton, 10);
         return signInButton.isDisplayed();
     }
 

@@ -32,9 +32,9 @@ public class LinkedinResetPasswordTest extends LinkedinBaseTest {
         Assert.assertTrue(linkedinNewPasswordRequestPage.isPageLoaded(), "New Password Request Page is not loaded" );
         LinkedinPasswordChangedPage linkedinPasswordChangedPage = linkedinNewPasswordRequestPage.createNewPassword("p0o9P)O(");
 
-        Assert.assertTrue(linkedinNewPasswordRequestPage.isPageLoaded(), "Password Page is not loaded" );
-        linkedinPasswordChangedPage.tapGoToHomeButton();
-        Assert.assertTrue(linkedinPasswordResetPage.isPageLoaded(), "Request Password Page is not loaded");
+        Assert.assertTrue(linkedinPasswordChangedPage.isPageLoaded(), "Password Page is not loaded" );
+        LinkedInHomePage linkedinHomePage = linkedinPasswordChangedPage.tapGoToHomeButton();
+        Assert.assertTrue(linkedinHomePage.isPageLoaded(), "Home page is not loaded");
 
 
     }

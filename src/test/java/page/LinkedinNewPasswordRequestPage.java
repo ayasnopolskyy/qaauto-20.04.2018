@@ -11,9 +11,9 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class LinkedinNewPasswordRequestPage extends LinkedInBasePage {
 
-    @FindBy(xpath = "//input[@id='newpassword']")
+    @FindBy(xpath = "//input[@id='newPassword']")
     private WebElement newPasswordField;
-    @FindBy(xpath = "//button[@id='confirmpassword']")
+    @FindBy(xpath = "//input[@id='confirmPassword']")
     private WebElement confirmPassField;
     @FindBy(xpath = "//button[@id='reset-password-submit-button']")
     private WebElement submitButton;

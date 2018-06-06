@@ -11,7 +11,7 @@ import util.GMailService;
  */
 public abstract class LinkedInBasePage {
 
-        protected WebDriver webDriver;
+        protected static WebDriver webDriver;
         public static GMailService gMailService = new GMailService();
 
 
